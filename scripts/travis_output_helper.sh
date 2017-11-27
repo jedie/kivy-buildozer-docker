@@ -2,7 +2,7 @@
 
 # https://stackoverflow.com/a/26082445/185510
 
-export PING_SLEEP=30s
+export PING_SLEEP=10s
 export WORKDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export BUILD_OUTPUT=$WORKDIR/build.out
 
@@ -23,6 +23,6 @@ trap 'error_handler' ERR
 
 ping_loop() {
   # set up a repeating loop to send some output to Travis.
-  bash -c "while true; do echo \$(date) - building ...; sleep $PING_SLEEP; done" &
+  bash -c "while true; do echo \$(date) - building ...; tail -10 $BUILD_OUTPUT; sleep $PING_SLEEP; done" &
   PING_LOOP_PID=$!
 }
