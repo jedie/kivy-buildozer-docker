@@ -17,7 +17,7 @@ RUN set -x \
         lib32stdc++6 lib32z1 lib32ncurses5 \
         build-essential \
         # missing packages:
-        python-pip unzip \
+        python-pip unzip curl \
     && apt-get -y install git openjdk-8-jdk --no-install-recommends zlib1g-dev \
     && apt-get autoremove \
     && apt-get clean \
