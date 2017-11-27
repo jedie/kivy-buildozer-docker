@@ -11,7 +11,7 @@ script:
     # start loop from travis_output_helper.sh
 #    - start_output_loop
 
-    # create docker image and download all needed andorid dependencies:
+    # create docker image and download all needed android dependencies:
     - docker build -t jedie/buildozer . #>> $BUILD_OUTPUT 2>&1
 
 #    - end_output_loop
