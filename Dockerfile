@@ -37,15 +37,13 @@ RUN set -x \
 
 USER buildozer
 
-# To "cache" all needed andorid depenciey, just create a .apk:
+# download all needed andorid dependencies:
 RUN set -x \
     && cd /buildozer/kivy_hello_world \
-    && buildozer --verbose android debug \
+    && buildozer android debug update \
     && cd .. \
     && rm -rf kivy_hello_world
 
 VOLUME /buildozer/
 
 WORKDIR /buildozer/
-
-CMD buildozer --verbose android release
