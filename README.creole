@@ -42,3 +42,4 @@ docker run buildozer pip freeze >>packages_docker.txt
 
 * https://github.com/tshirtman/Buildozer-docker
 * https://github.com/olymk2/docker_kivy_buildozer_container
+* https://github.com/paulheider/Kivy-Travis-CI-Template

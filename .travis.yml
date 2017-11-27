@@ -4,14 +4,21 @@ sudo: required
 language: generic
 
 script:
-    # create docker image and install everything needed:
-    - docker build -t buildozer .
+    # create docker image and install everything needed
+
+    # We use 'buildozer --verbose' to get better information about bild errors.
+    # But verbose mode will create output that exceeded the travis CI limit of 4 MB
+    - docker build -t buildozer . >> build_output.txt 2>&1
+    - tail --lines=200 build_output.txt
+
     # Just print some version info:
     - docker run buildozer uname -a
     - docker run buildozer cython --version
     - docker run buildozer buildozer --version
+
     # List all installed packages:
     - docker run buildozer dpkg-query -l
     - pip freeze
+    
     # run real-world example:
     - docker run -t buildozer -v ${PWD}/kivy_hello_world:/buildozer/ buildozer --verbose android release
