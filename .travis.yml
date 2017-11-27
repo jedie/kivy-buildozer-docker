@@ -16,7 +16,7 @@ script:
     - end_output_loop
 
     # List all installed packages:
-    - pip freeze
+    - docker run buildozer pip freeze
 
     # Just print some version info:
     - docker run buildozer uname -a

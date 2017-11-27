@@ -2,6 +2,10 @@
 
 Create Andorid .apk for kivy apps with buildozer on Travis CI via docker.
 
+Docker image is available here:
+
+ * https://hub.docker.com/r/jedie/buildozer/
+
 | {{https://travis-ci.org/jedie/kivy-buildozer-docker.svg|Build Status on travis-ci.org}} | [[https://travis-ci.org/jedie/kivy-buildozer-docker/|travis-ci.org/jedie/kivy-buildozer-docker]] |
 
 == usage ==
@@ -30,12 +34,11 @@ docker container prune -f
 
 === troubleshooting ===
 
-compare installed stuff e.g.:
+One idea is to compare installed packages between the "official" VirtualBox VM with the docker image.
+There are two helper snippets for this:
 
-{{{
-docker run buildozer dpkg-query -l >packages_docker.txt
-docker run buildozer pip freeze >>packages_docker.txt
-}}}
+ * [[https://github.com/jedie/kivy-buildozer-docker/blob/master/scripts/package_list_docker.sh|scripts/package_list_docker.sh]]
+ * [[https://github.com/jedie/kivy-buildozer-docker/blob/master/scripts/package_list_vm.sh|scripts/package_list_vm.sh]]
 
 
 == alternatives ==
