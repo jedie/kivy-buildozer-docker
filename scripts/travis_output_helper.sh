@@ -23,6 +23,6 @@ trap 'error_handler' ERR
 
 ping_loop() {
   # set up a repeating loop to send some output to Travis.
-  bash -c "while true; do echo \n\n\$(date) - building ...; tail -5 $BUILD_OUTPUT; sleep $PING_SLEEP; done" &
+  bash -c "while true; do echo -e \"\\n\\n\$(date) - building ...\"; tail -5 $BUILD_OUTPUT; sleep $PING_SLEEP; done" &
   PING_LOOP_PID=$!
 }
