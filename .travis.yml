@@ -8,12 +8,12 @@ before_script:
 
 script:
     # start loop from travis_output_helper.sh
-    - start_output_loop
+#    - start_output_loop
 
     # create docker image and download all needed andorid dependencies:
-    - docker build -t jedie/buildozer . >> $BUILD_OUTPUT 2>&1
+    - docker build -t jedie/buildozer . #>> $BUILD_OUTPUT 2>&1
 
-    - end_output_loop
+#    - end_output_loop
 
     # List all installed packages:
     - docker run jedie/buildozer pip freeze
