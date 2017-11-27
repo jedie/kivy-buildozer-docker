@@ -12,17 +12,17 @@ Docker image is available here:
 
 create docker image and install everything needed:
 {{{
-docker build -t buildozer .
+docker build -t jedie/buildozer .
 }}}
 
 compile {{{kivy_hello_world}}}:
 {{{
-docker run -t buildozer -v ${PWD}/kivy_hello_world:/buildozer/ buildozer --verbose android release
+docker run -t jedie/buildozer -v ${PWD}/kivy_hello_world:/buildozer/ buildozer --verbose android release
 }}}
 
 to into bash shell:
 {{{
-docker run -it buildozer -v ${PWD}/kivy_hello_world:/buildozer/ /bin/bash
+docker run -it jedie/buildozer -v ${PWD}/kivy_hello_world:/buildozer/ /bin/bash
 }}}
 
 == cleanup ==
