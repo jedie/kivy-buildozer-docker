@@ -8,13 +8,12 @@ before_script:
 
 script:
     # start loop from travis_output_helper.sh
-    - ping_loop
+    - start_output_loop
 
     # create docker image and download all needed andorid dependencies:
     - docker build -t buildozer . >> $BUILD_OUTPUT 2>&1
 
-    - dump_output
-    - kill $PING_LOOP_PID
+    - end_output_loop
 
     # List all installed packages:
     - pip freeze
@@ -25,7 +24,7 @@ script:
     - docker run buildozer buildozer --version
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
-    docker push jedie/buildozer;
-    fi
+    - if [ "$TRAVIS_BRANCH" == "master" ]; then
+        docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+        docker push jedie/buildozer;
+      fi
