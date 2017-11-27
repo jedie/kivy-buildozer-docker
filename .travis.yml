@@ -16,18 +16,16 @@ script:
     - dump_output
     - kill $PING_LOOP_PID
 
+    # List all installed packages:
+    - pip freeze
+
     # Just print some version info:
     - docker run buildozer uname -a
     - docker run buildozer cython --version
     - docker run buildozer buildozer --version
 
-    # List all installed packages:
-    - docker run buildozer dpkg-query -l
-    - pip freeze
-
-    # try to compile 'kivy_hello_world':
-    # We use 'buildozer --verbose' to get better information about build errors.
-    - ping_loop
-    - docker run -t buildozer -v ${PWD}/kivy_hello_world:/buildozer/ buildozer --verbose android release >> $BUILD_OUTPUT 2>&1
-    - dump_output
-    - kill $PING_LOOP_PID
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    docker push jedie/buildozer;
+    fi

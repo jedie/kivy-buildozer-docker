@@ -9,14 +9,14 @@ RUN set -x \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # install needed packages for buildozer
-# https://github.com/kivy/buildozer/blob/master/buildozer/tools/packer/scripts/additional-packages.sh
+# base is https://github.com/kivy/buildozer/blob/master/buildozer/tools/packer/scripts/additional-packages.sh
+# But we need some more tools here ;)
 RUN set -x \
     && dpkg --add-architecture i386 \
     && apt-get update -qq \
     && apt-get -y install \
         lib32stdc++6 lib32z1 lib32ncurses5 \
         build-essential \
-        # missing packages:
         python-pip unzip curl \
     && apt-get -y install git openjdk-8-jdk --no-install-recommends zlib1g-dev \
     && apt-get autoremove \
