@@ -4,7 +4,11 @@ sudo: required
 language: generic
 
 script:
+    # create docker image and install everything needed:
     - docker build -t buildozer .
-    - docker run -t buildozer uname -a
-    - docker run -t buildozer cython --version
-    - docker run -t buildozer buildozer --version
+    # Just print some version info:
+    - docker run buildozer uname -a
+    - docker run buildozer cython --version
+    - docker run buildozer buildozer --version
+    # run real-world example:
+    - docker run -t buildozer -v ${PWD}/kivy_hello_world:/buildozer/ buildozer --verbose android release

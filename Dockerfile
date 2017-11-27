@@ -23,12 +23,11 @@ RUN set -x \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# FIXME: cython v0.27 doesn't work
+# The buildozer VM used Cython v0.25
 RUN set -x \
     && pip install -U pip \
-    #&& pip install "cython<0.27" \
-#    && pip install buildozer python-for-android pyOpenssl
-    && pip install cython buildozer python-for-android pyOpenssl
+    && pip install "cython<0.26" \
+    && pip install buildozer python-for-android pyOpenssl
 
 ADD kivy_hello_world /buildozer/kivy_hello_world
 
