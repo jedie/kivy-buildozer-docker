@@ -40,7 +40,7 @@ USER buildozer
 # To "cache" all needed andorid depenciey, just create a .apk:
 RUN set -x \
     && cd /buildozer/kivy_hello_world \
-    && buildozer --verbose android debug \
+    && buildozer android debug \
     && cd .. \
     && rm -rf kivy_hello_world
 
@@ -48,4 +48,4 @@ VOLUME /buildozer/
 
 WORKDIR /buildozer/
 
-CMD buildozer --verbose android release
+CMD buildozer android release
