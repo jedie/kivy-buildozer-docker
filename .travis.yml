@@ -26,5 +26,5 @@ script:
 
 after_success:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then
-        docker push jedie/buildozer
+        docker push jedie/buildozer;
       fi
