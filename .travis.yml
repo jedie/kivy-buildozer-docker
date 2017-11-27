@@ -4,4 +4,7 @@ sudo: required
 language: generic
 
 script:
-    - docker build -t runcalculator .
+    - docker build -t buildozer .
+    - docker run -t buildozer uname -a
+    - docker run -t buildozer cython --version
+    - docker run -t buildozer buildozer --version

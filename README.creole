@@ -3,3 +3,11 @@
 Create Andorid .apk for kivy apps with buildozer on Travis CI via docker.
 
 | {{https://travis-ci.org/jedie/kivy-buildozer-docker.svg|Build Status on travis-ci.org}} | [[https://travis-ci.org/jedie/kivy-buildozer-docker/|travis-ci.org/jedie/kivy-buildozer-docker]] |
+
+
+== cleanup ==
+
+{{{
+docker image prune -f
+docker container prune -f
+}}}
