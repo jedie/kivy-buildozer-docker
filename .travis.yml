@@ -11,17 +11,17 @@ script:
     - start_output_loop
 
     # create docker image and download all needed andorid dependencies:
-    - docker build -t buildozer . >> $BUILD_OUTPUT 2>&1
+    - docker build -t jedie/buildozer . >> $BUILD_OUTPUT 2>&1
 
     - end_output_loop
 
     # List all installed packages:
-    - docker run buildozer pip freeze
+    - docker run jedie/buildozer pip freeze
 
     # Just print some version info:
-    - docker run buildozer uname -a
-    - docker run buildozer cython --version
-    - docker run buildozer buildozer --version
+    - docker run jedie/buildozer uname -a
+    - docker run jedie/buildozer cython --version
+    - docker run jedie/buildozer buildozer --version
 
 after_success:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then

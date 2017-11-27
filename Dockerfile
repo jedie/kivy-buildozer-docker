@@ -1,5 +1,7 @@
 FROM ubuntu:17.04
 
+MAINTAINER Jens Diemer "https://github.com/jedie/kivy-buildozer-docker"
+
 # Update ubuntu:
 RUN set -x \
     && apt-get update -qq \
