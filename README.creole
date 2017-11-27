@@ -4,6 +4,22 @@ Create Andorid .apk for kivy apps with buildozer on Travis CI via docker.
 
 | {{https://travis-ci.org/jedie/kivy-buildozer-docker.svg|Build Status on travis-ci.org}} | [[https://travis-ci.org/jedie/kivy-buildozer-docker/|travis-ci.org/jedie/kivy-buildozer-docker]] |
 
+== usage ==
+
+create docker image and install everything needed:
+{{{
+docker build -t buildozer .
+}}}
+
+compile {{{kivy_hello_world}}}:
+{{{
+docker run -t buildozer -v ${PWD}/kivy_hello_world:/buildozer/ buildozer --verbose android release
+}}}
+
+to into bash shell:
+{{{
+docker run -it buildozer -v ${PWD}/kivy_hello_world:/buildozer/ /bin/bash
+}}}
 
 == cleanup ==
 
@@ -11,3 +27,18 @@ Create Andorid .apk for kivy apps with buildozer on Travis CI via docker.
 docker image prune -f
 docker container prune -f
 }}}
+
+=== troubleshooting ===
+
+compare installed stuff e.g.:
+
+{{{
+docker run buildozer dpkg-query -l >packages_docker.txt
+docker run buildozer pip freeze >>packages_docker.txt
+}}}
+
+
+== alternatives ==
+
+* https://github.com/tshirtman/Buildozer-docker
+* https://github.com/olymk2/docker_kivy_buildozer_container

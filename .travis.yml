@@ -10,5 +10,8 @@ script:
     - docker run buildozer uname -a
     - docker run buildozer cython --version
     - docker run buildozer buildozer --version
+    # List all installed packages:
+    - docker run buildozer dpkg-query -l
+    - pip freeze
     # run real-world example:
     - docker run -t buildozer -v ${PWD}/kivy_hello_world:/buildozer/ buildozer --verbose android release
