@@ -3,9 +3,18 @@ sudo: required
 
 language: generic
 
+before_script:
+    - source scripts/travis_output_helper.sh
+
 script:
+    # start loop from travis_output_helper.sh
+    - ping_loop
+
     # create docker image and download all needed andorid dependencies:
-    - docker build -t buildozer .
+    - docker build -t buildozer . >> $BUILD_OUTPUT 2>&1
+
+    - dump_output
+    - kill $PING_LOOP_PID
 
     # Just print some version info:
     - docker run buildozer uname -a
@@ -17,8 +26,8 @@ script:
     - pip freeze
 
     # try to compile 'kivy_hello_world':
-
     # We use 'buildozer --verbose' to get better information about build errors.
-    # But verbose mode will create output that exceeded the travis CI limit of 4 MB
-    - docker run -t buildozer -v ${PWD}/kivy_hello_world:/buildozer/ buildozer --verbose android release >> build_output.txt 2>&1
-    - tail --lines=200 build_output.txt
+    - ping_loop
+    - docker run -t buildozer -v ${PWD}/kivy_hello_world:/buildozer/ buildozer --verbose android release >> $BUILD_OUTPUT 2>&1
+    - dump_output
+    - kill $PING_LOOP_PID

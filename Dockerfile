@@ -23,11 +23,11 @@ RUN set -x \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# The buildozer VM used Cython v0.25
+# The buildozer VM used Cython v0.25 and buildozer v0.32
 RUN set -x \
     && pip install -U pip \
     && pip install "cython<0.26" \
-    && pip install buildozer python-for-android pyOpenssl
+    && pip install "buildozer!=0.33" python-for-android pyOpenssl
 
 ADD kivy_hello_world /buildozer/kivy_hello_world
 
@@ -40,7 +40,7 @@ USER buildozer
 # download all needed andorid dependencies:
 RUN set -x \
     && cd /buildozer/kivy_hello_world \
-    && buildozer android debug update \
+    && buildozer --verbose android release \
     && cd .. \
     && rm -rf kivy_hello_world
 
