@@ -1,0 +1,3 @@
+title=Hello World
+author=Jens Diemer
+orientation=portrait
