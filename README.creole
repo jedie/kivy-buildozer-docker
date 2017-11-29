@@ -25,6 +25,10 @@ to into bash shell:
 docker run -it jedie/buildozer -v ${PWD}/kivy_hello_world:/buildozer/ /bin/bash
 }}}
 
+Example project that used this docker image is:
+
+ * https://github.com/jedie/RunCalculator
+
 == cleanup ==
 
 {{{
