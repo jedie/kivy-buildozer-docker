@@ -1,4 +1,4 @@
-FROM ubuntu:17.04
+FROM ubuntu:17.10
 
 MAINTAINER Jens Diemer "https://github.com/jedie/kivy-buildozer-docker"
 
