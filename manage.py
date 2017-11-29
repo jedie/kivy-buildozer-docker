@@ -152,7 +152,7 @@ def command_build(args):
     """
     ./manage.py build
     """
-    verbose_check("docker", "build", "-t", args.image)
+    verbose_check("docker", "build", "-t", args.image, ".")
 
 
 def cli():
