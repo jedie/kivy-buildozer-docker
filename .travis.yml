@@ -3,28 +3,12 @@ sudo: required
 
 language: generic
 
-before_script:
-    - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-#    - source scripts/travis_output_helper.sh
-
 script:
-    # start loop from travis_output_helper.sh
-#    - start_output_loop
-
-    # create docker image and download all needed android dependencies:
-    - docker build -t jedie/buildozer . #>> $BUILD_OUTPUT 2>&1
-
-#    - end_output_loop
-
-    # List all installed packages:
-    - docker run jedie/buildozer pip freeze
-
-    # Just print some version info:
-    - docker run jedie/buildozer uname -a
-    - docker run jedie/buildozer cython --version
-    - docker run jedie/buildozer buildozer --version
+    - python3 ./manage.py build
+    - python3 ./manage.py version_info
 
 after_success:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then
+        docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
         docker push jedie/buildozer;
       fi
