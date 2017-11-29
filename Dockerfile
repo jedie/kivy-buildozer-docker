@@ -1,4 +1,4 @@
-FROM ubuntu:17.04
+FROM ubuntu:17.10
 
 MAINTAINER Jens Diemer "https://github.com/jedie/kivy-buildozer-docker"
 
@@ -42,7 +42,6 @@ USER buildozer
 # download all needed andorid dependencies:
 RUN set -x \
     && cd /buildozer/kivy_hello_world \
-#    && buildozer --verbose android release \
     && buildozer android release \
     && cd .. \
     && rm -rf kivy_hello_world
