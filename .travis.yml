@@ -23,6 +23,8 @@ script:
     - docker run jedie/buildozer uname -a
     - docker run jedie/buildozer cython --version
     - docker run jedie/buildozer buildozer --version
+    
+    - echo "OK"
 
 after_success:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then
