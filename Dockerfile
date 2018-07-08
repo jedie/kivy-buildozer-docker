@@ -42,7 +42,7 @@ USER buildozer
 # download all needed andorid dependencies:
 RUN set -x \
     && cd /buildozer/kivy_hello_world \
-    && buildozer android release \
+    && travis_retry buildozer android release \
     && cd .. \
     && rm -rf kivy_hello_world
 
