@@ -17,12 +17,12 @@ docker build -t jedie/buildozer .
 
 compile {{{kivy_hello_world}}}:
 {{{
-docker run -t jedie/buildozer -v ${PWD}/kivy_hello_world:/buildozer/ buildozer --verbose android release
+docker run -t -v ${PWD}/kivy_hello_world:/buildozer/  jedie/buildozer buildozer --verbose android release
 }}}
 
 to into bash shell:
 {{{
-docker run -it jedie/buildozer -v ${PWD}/kivy_hello_world:/buildozer/ /bin/bash
+docker run -it -v ${PWD}/kivy_hello_world:/buildozer/ jedie/buildozer /bin/bash
 }}}
 
 Example project that used this docker image is:
